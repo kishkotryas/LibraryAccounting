@@ -23,17 +23,33 @@ public class Main {
                 case 3:
                     System.out.println("Введите ID читателя, которому будет выдана книга:");
                     int readerID = scanner.nextInt();
+                    library.displayAllBooks();
                     System.out.println("Введите ID выдаваемой книги:");
                     int bookID = scanner.nextInt();
                     library.giveBookToReader(bookID, readerID);
                     printMenu();
                     break;
+                case 4:
+                    System.out.println("Введите ID читателя, у которого нужно принять книгу:");
+                    readerID = scanner.nextInt();
+                    library.displayBooksOfReader(readerID);
+                    System.out.println("Введите ID книги:");
+                    bookID = scanner.nextInt();
+                    library.getBookBack(readerID, bookID);
+                    printMenu();
+                    break;
                 case 5:
-                    library.displayBooks();
+                    library.displayAllBooks();
                     printMenu();
                     break;
                 case 6:
                     library.displayReaders();
+                    printMenu();
+                    break;
+                case 8:
+                    System.out.println("Введите ID читателя для показа:");
+                    readerID = scanner.nextInt();
+                    library.displayBooksOfReader(readerID);
                     printMenu();
                     break;
                 case 9:

@@ -8,7 +8,8 @@ public class Reader {
     public String dateOfBirthday;
     public ArrayList <Integer> books;
     public String phoneNum;
-    public int booksLimit = 5;
+    public int booksLimit;
+    public int maxBooksLimit = 5;
 
     public Reader (int id, String name, String dateOfBirthday, String phoneNum) {
         books = new ArrayList<>();
@@ -16,5 +17,11 @@ public class Reader {
         this.nameAndSurname = name;
         this. dateOfBirthday = dateOfBirthday;
         this.phoneNum = phoneNum;
+        booksLimit = 0;
+    }
+
+    public int getLimitDifference () {
+        int result = maxBooksLimit - booksLimit;
+        return result;
     }
 }
