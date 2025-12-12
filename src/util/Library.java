@@ -149,6 +149,7 @@ public class Library {
             }
         }
     }
+
     public void displayReaders() {
         if (catalogOfReaders.isEmpty()) {
             System.out.println("Нет добавленных читателей.");
@@ -159,6 +160,22 @@ public class Library {
                         ", Дата рождения: " + element.dateOfBirthday + ", Номер телефона: " + element.phoneNum +
                         ", Максимальное кол-во книг для выдачи: " + element.maxBooksLimit);
             }
+        }
+    }
+
+    public void findBook () {
+        int i = 1;
+        System.out.println("Введите ID книги для поиска:");
+        int intOfID = scanner.nextInt();
+        if (catalogOfBooks.containsKey(intOfID)) {
+            for (Book book : catalogOfBooks.values()) {
+                var element = catalogOfBooks.get(intOfID);
+                System.out.println(i + "." + " Книга: " + element.name + "(ID:" + element.id + "), Автор: " + element.author + ", Год выпуска: " +
+                        element.releaseYear + ", Жанр: " + getGenre(element.genre) + ", Книга доступна? " + element.isAvaliable);
+                ++i;
+            }
+        } else {
+            System.out.println("Ошибка! В каталоге нет ни одной подобной книги");
         }
     }
 

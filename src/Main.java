@@ -46,6 +46,10 @@ public class Main {
                     library.displayReaders();
                     printMenu();
                     break;
+                case 7:
+                    library.findBook();
+                    printMenu();
+                    break;
                 case 8:
                     System.out.println("Введите ID читателя для показа:");
                     readerID = scanner.nextInt();
