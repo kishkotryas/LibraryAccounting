@@ -24,4 +24,6 @@ public class Reader {
         int result = maxBooksLimit - booksLimit;
         return result;
     }
+
+    // Были проведены тесты
 }

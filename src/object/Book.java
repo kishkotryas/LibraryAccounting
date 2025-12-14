@@ -17,4 +17,6 @@ public class Book {
         this.genre = genre;
     }
 
+    // Были проведены тесты
+
 }
