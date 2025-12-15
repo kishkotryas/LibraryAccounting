@@ -1,5 +1,7 @@
 package object;
 
+import java.util.Objects;
+
 public class Book {
     public int id;
     public String name;
@@ -15,6 +17,18 @@ public class Book {
         this.author = author;
         this.releaseYear = releaseYear;
         this.genre = genre;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if ((obj == null) || this.getClass() != obj.getClass()) return false;
+        Book otherBook = (Book) obj;
+        return Objects.equals(id, otherBook.id) &&
+                Objects.equals(name, otherBook.name) &&
+                Objects.equals(author, otherBook.author) &&
+                Objects.equals(genre, otherBook.genre) &&
+                (releaseYear == otherBook.releaseYear);
     }
 
     // Были проведены тесты

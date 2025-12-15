@@ -1,6 +1,9 @@
 package util;
 import object.*;
+
+import java.lang.runtime.ObjectMethods;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Library {
@@ -29,12 +32,11 @@ public class Library {
         String bookGenre = scanner.nextLine();
         Book newBook = new Book(bookID, bookName, bookAuthor, bookYear, bookGenre);
 
-        catalogOfBooks.put(newBook.id, newBook);
-
         if (catalogOfBooks.containsValue(newBook)) {
-            System.out.println("Книга успешно добавлена в каталог!");
-        } else {
             System.out.println("Произошла ошибка при добавлении книги.");
+        } else {
+            System.out.println("Книга успешно добавлена в каталог!");
+            catalogOfBooks.put(newBook.id, newBook);
         }
     }
 
@@ -149,6 +151,8 @@ public class Library {
             }
         }
     }
+
+
 
     public void displayReaders() {
         if (catalogOfReaders.isEmpty()) {
