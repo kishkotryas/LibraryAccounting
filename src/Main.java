@@ -3,7 +3,7 @@ import util.Library;
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String [] args) {
+    public static void main(String[] args) {
         Library library = new Library();
         Scanner scanner = new Scanner(System.in);
         printMenu();
@@ -66,17 +66,15 @@ public class Main {
         }
     }
 
-    private static void printMenu () {
-        System.out.println( "1. Добавить книгу\n" +
-                            "2. Добавить читателя\n" +
-                            "3. Выдать книгу\n" +
-                            "4. Принять книгу\n" +
-                            "5. Показать все книги\n" +
-                            "6. Показать всех читателей\n" +
-                            "7. Поиск книги\n" +
-                            "8. Показать книги на руках у читателя\n" +
-                            "9. Выход" );
+    private static void printMenu() {
+        System.out.println("1. Добавить книгу\n" +
+                "2. Добавить читателя\n" +
+                "3. Выдать книгу\n" +
+                "4. Принять книгу\n" +
+                "5. Показать все книги\n" +
+                "6. Показать всех читателей\n" +
+                "7. Поиск книги\n" +
+                "8. Показать книги на руках у читателя\n" +
+                "9. Выход");
     }
-
-    // Были проведены тесты
 }

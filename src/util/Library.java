@@ -1,22 +1,22 @@
 package util;
-import object.*;
 
-import java.lang.runtime.ObjectMethods;
+import object.Book;
+import object.Reader;
+
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Library {
     Scanner scanner = new Scanner(System.in);
-    private HashMap <Integer, Book> catalogOfBooks;
-    private HashMap <Integer, Reader> catalogOfReaders;
+    private HashMap<Integer, Book> catalogOfBooks;
+    private HashMap<Integer, Reader> catalogOfReaders;
 
-    public Library () {
+    public Library() {
         catalogOfBooks = new HashMap<>();
         catalogOfReaders = new HashMap<>();
     }
 
-    public void createBook () {
+    public void createBook() {
         System.out.println("Введите ID для добавления книги: ");
         int bookID = scanner.nextInt();
         scanner.nextLine();
@@ -40,7 +40,7 @@ public class Library {
         }
     }
 
-    public void createReader () {
+    public void createReader() {
         System.out.println("Введите ID читателя: ");
         int readerID = scanner.nextInt();
         scanner.nextLine();
@@ -61,12 +61,12 @@ public class Library {
         }
     }
 
-    private static void printGenreBookMenu () {
-        System.out.println( "1 - Боевик, 2 - Ужасы,\n" +
+    private static void printGenreBookMenu() {
+        System.out.println("1 - Боевик, 2 - Ужасы,\n" +
                 "3 - Фантастика, 4 - Детектив");
     }
 
-    public boolean giveBookToReader (int bookID, int readerID) {
+    public boolean giveBookToReader(int bookID, int readerID) {
         Book book = catalogOfBooks.get(bookID);
         Reader reader = catalogOfReaders.get(readerID);
         if (book == null) {
@@ -88,11 +88,12 @@ public class Library {
         book.isAvaliable = false;
         reader.books.add(bookID);
         reader.booksLimit += 1;
-        System.out.println("Книга " + book.name + "(ID:" + bookID + ") была выдана читателю " + reader.nameAndSurname + "(ID:" + readerID + ").");
+        System.out.println("Книга " + book.name + "(ID:" + bookID + ") была выдана читателю "
+                + reader.nameAndSurname + "(ID:" + readerID + ").");
         return true;
     }
 
-    public boolean getBookBack (int readerID, int bookID) {
+    public boolean getBookBack(int readerID, int bookID) {
         Book book = catalogOfBooks.get(bookID);
         Reader reader = catalogOfReaders.get(readerID);
 
@@ -111,11 +112,12 @@ public class Library {
         book.isAvaliable = true;
         reader.books.remove(reader.books.indexOf(bookID));
         reader.booksLimit -= 1;
-        System.out.println("Книга " + book.name + "(ID:" + bookID + ") была принята у читателя " + reader.nameAndSurname + "(ID:" + readerID + ").");
+        System.out.println("Книга " + book.name + "(ID:" + bookID + ") была принята у читателя "
+                + reader.nameAndSurname + "(ID:" + readerID + ").");
         return true;
     }
 
-    public void displayBooksOfReader (int readerID) {
+    public void displayBooksOfReader(int readerID) {
         Reader reader = catalogOfReaders.get(readerID);
         int i = 1;
         if (reader == null) {
@@ -126,8 +128,10 @@ public class Library {
             }
             for (Integer bookID : reader.books) {
                 Book book = catalogOfBooks.get(bookID);
-                System.out.println("На данный момент на руках у читателя " + reader.nameAndSurname + "(ID:" + readerID + "):");
-                System.out.println(i + ". Книга " + book.name + "(ID:" + book.id + "), Автор: " + book.author + ", Год выпуска: " + book.releaseYear);
+                System.out.println("На данный момент на руках у читателя " + reader.nameAndSurname
+                        + "(ID:" + readerID + "):");
+                System.out.println(i + ". Книга " + book.name + "(ID:" + book.id + "), Автор: "
+                        + book.author + ", Год выпуска: " + book.releaseYear);
                 ++i;
             }
             if (reader.booksLimit == reader.maxBooksLimit) {
@@ -138,20 +142,21 @@ public class Library {
         }
     }
 
-    public void displayAllBooks () {
+    public void displayAllBooks() {
         int i = 1;
         if (catalogOfBooks.isEmpty()) {
             System.out.println("Нет добавленных книг.");
         } else {
             for (Book book : catalogOfBooks.values()) {
                 var element = catalogOfBooks.get(book.id);
-                System.out.println(i + "." + " Книга: " + element.name + "(ID:" + element.id + "), Автор: " + element.author + ", Год выпуска: " +
-                        element.releaseYear + ", Жанр: " + getGenre(element.genre) + ", Книга доступна? " + element.isAvaliable);
+                System.out.println(i + "." + " Книга: " + element.name + "(ID:" + element.id + "), Автор: "
+                        + element.author + ", Год выпуска: " +
+                        element.releaseYear + ", Жанр: " + getGenre(element.genre)
+                        + ", Книга доступна? " + element.isAvaliable);
                 ++i;
             }
         }
     }
-
 
 
     public void displayReaders() {
@@ -167,15 +172,17 @@ public class Library {
         }
     }
 
-    public void findBook () {
+    public void findBook() {
         int i = 1;
         System.out.println("Введите ID книги для поиска:");
         int intOfID = scanner.nextInt();
         if (catalogOfBooks.containsKey(intOfID)) {
             for (Book book : catalogOfBooks.values()) {
                 var element = catalogOfBooks.get(intOfID);
-                System.out.println(i + "." + " Книга: " + element.name + "(ID:" + element.id + "), Автор: " + element.author + ", Год выпуска: " +
-                        element.releaseYear + ", Жанр: " + getGenre(element.genre) + ", Книга доступна? " + element.isAvaliable);
+                System.out.println(i + "." + " Книга: " + element.name + "(ID:" + element.id + "), Автор: "
+                        + element.author + ", Год выпуска: " +
+                        element.releaseYear + ", Жанр: " + getGenre(element.genre)
+                        + ", Книга доступна? " + element.isAvaliable);
                 ++i;
             }
         } else {
@@ -183,7 +190,7 @@ public class Library {
         }
     }
 
-    public String getGenre (String genre) {
+    public String getGenre(String genre) {
         switch (genre) {
             case "1":
                 return "Боевик";
@@ -197,6 +204,4 @@ public class Library {
                 return "Роман";    // роман - по умолчанию
         }
     }
-
-    // Были проведены тесты
 }

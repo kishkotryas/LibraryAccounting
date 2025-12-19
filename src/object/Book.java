@@ -10,7 +10,7 @@ public class Book {
     public String genre;
     public boolean isAvaliable;
 
-    public Book (int id, String name, String author, int releaseYear, String genre) {
+    public Book(int id, String name, String author, int releaseYear, String genre) {
         isAvaliable = true;
         this.id = id;
         this.name = name;
